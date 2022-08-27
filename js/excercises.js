@@ -13,15 +13,14 @@ let mustStr = "El tipo de dato debe ser una cadena de texto";
 let mustNumber = "El tipo de dato debe ser un número";
 
 function checkTypeData(info, data) {
-	try {
-		if (!(typeof info === data)) {
-			throw new Error(
-				`El tipo de dato introducido, no fue el esperado. Inténtelo de nuevo`
-			);
-		}
-	} catch (e) {
-		return e;
-	}
+  try {
+    if (!(typeof info === data)) {
+      throw new Error(`El tipo de dato introducido, no fue el esperado. Inténtelo de nuevo`
+      );
+    }
+  } catch (e) {
+    return e;
+  }
 }
 
 // asserts for unit testing
@@ -30,26 +29,26 @@ let conditionsObject = {};
 let i = 0;
 
 function unitTesting(test, condition, ...conditions) {
-	conditions.forEach((cond) => {
-		condTest[i] = "cond" + i;
-		i++;
-	});
+  conditions.forEach((cond) => {
+    condTest[i] = "cond" + i;
+    i++;
+  });
 
-	conditions.forEach((cond) => {
-		console.assert(condition, {test, ...cond});
-	});
+  conditions.forEach((cond) => {
+    console.assert(condition, {test, ...cond});
+  });
 }
 
 // 1
 console.log("1 | Inicio");
 const countChars = (text) => {
-	let textLen = text.length;
-	if (!checkTypeData(text, str)) {
-		console.log(textLen);
-	} else {
-		console.log(checkTypeData(text, str));
-	}
-	return unitTesting("Hola mundo tiene 10 carácteres", textLen === 10, textLen);
+  let textLen = text.length;
+  if (!checkTypeData(text, str)) {
+    console.log(textLen);
+  } else {
+    console.log(checkTypeData(text, str));
+  }
+  return unitTesting("Hola mundo tiene 10 carácteres", textLen === 10, textLen);
 };
 countChars("Hola Mundo");
 
@@ -57,17 +56,17 @@ countChars("Hola Mundo");
 console.log("2");
 // use slice() method to extract indicated chars on function
 const sliceText = (text, startPos, endPos) => {
-	if (!checkTypeData(text, str)) {
-		var slicedText = text.slice(startPos, endPos);
-		console.log(slicedText);
-	} else {
-		console.log(checkTypeData(text, str));
-	}
-	return unitTesting(
-		"Partir Hola mundo a 4 chars y que quede Hola",
-		slicedText.length === 4,
-		slicedText
-	);
+  if (!checkTypeData(text, str)) {
+    var slicedText = text.slice(startPos, endPos);
+    console.log(slicedText);
+  } else {
+    console.log(checkTypeData(text, str));
+  }
+  return unitTesting(
+    "Partir Hola mundo a 4 chars y que quede Hola",
+    slicedText.length === 4,
+    slicedText
+  );
 };
 sliceText("Hola Mundo", 0, 4);
 
@@ -75,17 +74,17 @@ sliceText("Hola Mundo", 0, 4);
 console.log("3");
 // use split() method to separate an object by a pattern
 const splitText = (text, sep) => {
-	if (!checkTypeData(text, str)) {
-		var splitedText = text.split(sep);
-		console.log(splitedText);
-	} else {
-		console.log(checkTypeData(text, str));
-	}
-	return unitTesting(
-		'Separar un string en un array dependiendo del sep indicado, hola que tal -> ["hola", "que", "tal]',
-		splitedText.length === 3,
-		splitedText
-	);
+  if (!checkTypeData(text, str)) {
+    var splitedText = text.split(sep);
+    console.log(splitedText);
+  } else {
+    console.log(checkTypeData(text, str));
+  }
+  return unitTesting(
+    'Separar un string en un array dependiendo del sep indicado, hola que tal -> ["hola", "que", "tal]',
+    splitedText.length === 3,
+    splitedText
+  );
 };
 
 splitText("hola que tal", " ");
@@ -93,17 +92,17 @@ splitText("hola que tal", " ");
 // 4
 console.log("4");
 const repeatText = (text, times) => {
-	// si tiene solo una línea no se ponen llaves
-	if (!checkTypeData(text, str)) {
-		text += " ";
-		return text.repeat(times);
-	}
-	console.log(checkTypeData(text, str));
+  // si tiene solo una línea no se ponen llaves
+  if (!checkTypeData(text, str)) {
+    text += " ";
+    return text.repeat(times);
+  }
+  console.log(checkTypeData(text, str));
 };
 
 console.log(repeatText("Hola Mundo", 3));
 console.log(
-	"////////////////////Esto no va a tener UT//////////////////////////"
+  "////////////////////Esto no va a tener UT//////////////////////////"
 );
 
 /*
@@ -116,14 +115,14 @@ console.log(
 // 5
 console.log("5");
 const revertString = (text) => {
-	if (!checkTypeData(text, str) && text !== "") {
-		let strToArray = Array.from(text);
-		strToArray.reverse();
-		let newString = strToArray.join("");
-		return console.log(newString.replaceAll(",", ""));
-	}
+  if (!checkTypeData(text, str) && text !== "") {
+    let strToArray = Array.from(text);
+    strToArray.reverse();
+    let newString = strToArray.join("");
+    return console.log(newString.replaceAll(",", ""));
+  }
 
-	return console.error(mustStr);
+  return console.error(mustStr);
 };
 
 revertString("hola mundo");
@@ -132,20 +131,20 @@ revertString("hola mundo");
 console.log("6");
 
 const repeatedWord = (text, word) => {
-	if (
-		!checkTypeData(text, str) &&
-		!checkTypeData(word, str) &&
-		text !== "" &&
-		word !== ""
-	) {
-		let regex = new RegExp(word, "ig");
-		let foundedText = text.match(regex);
-		return console.log(foundedText.length);
-	}
+  if (
+    !checkTypeData(text, str) &&
+    !checkTypeData(word, str) &&
+    text !== "" &&
+    word !== ""
+  ) {
+    let regex = new RegExp(word, "ig");
+    let foundedText = text.match(regex);
+    return console.log(foundedText.length);
+  }
 
-	return console.error(mustStr);
+  return console.error(mustStr);
 
-	// also can be solved with indexOf() method, with searchElement and indexFrom pars
+  // also can be solved with indexOf() method, with searchElement and indexFrom pars
 };
 
 repeatedWord("Hola Mundo que pedo mundo", "mundo");
@@ -154,47 +153,47 @@ repeatedWord("Hola Mundo que pedo mundo", "mundo");
 console.log("7");
 
 const checkPalindrome = (word) => {
-	// use a regex to reverse the str & lowerCase it
-	// using /[\W_]/g to replace /[^A-Za-z0-9]/g
-	if (!checkTypeData(word, str)) {
-		let regex = /[\W_]/g;
-		// find RegExp and lower case the chars
-		let lowerStr = word.replace(regex, "").toLowerCase();
-		// first split every char in a ele of arr, reverse the elements and join all into a new string
-		let reversedStr = lowerStr.split("").reverse().join("");
+  // use a regex to reverse the str & lowerCase it
+  // using /[\W_]/g to replace /[^A-Za-z0-9]/g
+  if (!checkTypeData(word, str)) {
+    let regex = /[\W_]/g;
+    // find RegExp and lower case the chars
+    let lowerStr = word.replace(regex, "").toLowerCase();
+    // first split every char in a ele of arr, reverse the elements and join all into a new string
+    let reversedStr = lowerStr.split("").reverse().join("");
 
-		if (lowerStr === reversedStr) return console.log("true");
-		return console.log("false");
-	}
+    if (lowerStr === reversedStr) return console.log("true");
+    return console.log("false");
+  }
 
-	return mustStr;
+  return mustStr;
 };
 
 // Other palindrome form 7.1
 console.log("7.1");
 const checkPalindrome2 = (word) => {
-	let regex = /\[W_]/g;
-	word = word.toLowerCase().replace(regex, "");
-	let lenWord = word.length;
+  let regex = /\[W_]/g;
+  word = word.toLowerCase().replace(regex, "");
+  let lenWord = word.length;
 
-	for (let i = 0; i < lenWord / 2; i++) {
-		if (word[i] !== word[lenWord - 1 - i]) {
-			return false;
-		}
+  for (let i = 0; i < lenWord / 2; i++) {
+    if (word[i] !== word[lenWord - 1 - i]) {
+      return false;
+    }
 
-		return true;
-	}
+    return true;
+  }
 };
 
 console.log("0.1");
 const factorializeNumber = (number) => {
-	number === 0 || number === 1 ? 1 : true;
+  number === 0 || number === 1 ? 1 : true;
 
-	for (let i = number - 1; i >= 1; i--) {
-		number *= i;
-	}
+  for (let i = number - 1; i >= 1; i--) {
+    number *= i;
+  }
 
-	return number;
+  return number;
 };
 
 console.log(factorializeNumber(0));
@@ -206,8 +205,8 @@ console.log(checkPalindrome2("A man, a plan, a canal. Panama"));
 console.log("8");
 
 const delRegex = (text, pattern) => {
-	let regex = new RegExp(pattern, "gis");
-	return text.replace(regex, "");
+  let regex = new RegExp(pattern, "gis");
+  return text.replace(regex, "");
 };
 
 console.log(delRegex("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz"));
@@ -222,19 +221,19 @@ console.log(delRegex("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz"));
 console.log("9");
 
 const randomNumber = (min, max) => {
-	if (!checkTypeData(min, nom)) {
-		let minVal = min;
-		let maxVal = max;
-		for (let i = minVal; i <= maxVal; i++) {
-			if (i !== maxVal) {
-				return Math.round(Math.random() * (max - min) + min);
-			}
+  if (!checkTypeData(min, nom)) {
+    let minVal = min;
+    let maxVal = max;
+    for (let i = minVal; i <= maxVal; i++) {
+      if (i !== maxVal) {
+        return Math.round(Math.random() * (max - min) + min);
+      }
 
-			break;
-		}
-	}
+      break;
+    }
+  }
 
-	return mustNumber;
+  return mustNumber;
 };
 
 console.log("El número aleatorio es: " + randomNumber(501, 600));
@@ -243,17 +242,17 @@ console.log("El número aleatorio es: " + randomNumber(501, 600));
 console.log("10");
 
 const capicuaNu = (number) => {
-	let reversedNumber = [];
+  let reversedNumber = [];
 
-	for (let dig of number) {
-		number.toString();
-		reversedNumber += dig;
+  for (let dig of number) {
+    number.toString();
+    reversedNumber += dig;
 
-		if (reversedNumber.length === number.length) {
-			let revers = reversedNumber.split("").reverse().join("");
-			return revers === number ? "número capicúa" : "no es un número capicúa";
-		}
-	}
+    if (reversedNumber.length === number.length) {
+      let revers = reversedNumber.split("").reverse().join("");
+      return revers === number ? "número capicúa" : "no es un número capicúa";
+    }
+  }
 };
 
 console.log(capicuaNu("1002"));
@@ -262,13 +261,13 @@ console.log(capicuaNu("1002"));
 console.log("11");
 
 const factorialNumber = (number) => {
-	let numberLen = number - 1;
-	let result = 0;
-	for (let i = numberLen; i >= 1; i--) {
-		result = number *= i;
-	}
+  let numberLen = number - 1;
+  let result = 0;
+  for (let i = numberLen; i >= 1; i--) {
+    result = number *= i;
+  }
 
-	return result;
+  return result;
 };
 
 console.log(factorialNumber(5));
@@ -282,23 +281,23 @@ sólo si se divide entre el mismo y el 1, da como resultado un 1
 */
 
 const primeOrNotNumber = (number) => {
-	if (!checkTypeData(number, nom)) {
-		let indicator = true;
+  if (!checkTypeData(number, nom)) {
+    let indicator = true;
 
-		number = parseInt(number);
+    number = parseInt(number);
 
-		for (let i = 2; i <= number - 1; i++) {
-			if (number % i === 0) {
-				indicator = false;
-				break;
-			}
-		}
+    for (let i = 2; i <= number - 1; i++) {
+      if (number % i === 0) {
+        indicator = false;
+        break;
+      }
+    }
 
-		indicator
-			? console.log(number + " es un número primo")
-			: console.log(number + " no es un número primo");
-	}
-	return mustNumber;
+    indicator
+      ? console.log(number + " es un número primo")
+      : console.log(number + " no es un número primo");
+  }
+  return mustNumber;
 };
 
 primeOrNotNumber(7);
@@ -306,9 +305,9 @@ primeOrNotNumber(7);
 // 13
 console.log("13");
 const evenOrOdd = (number) => {
-	if (number % 2 === 0) return `${number} es un número par`;
+  if (number % 2 === 0) return `${number} es un número par`;
 
-	return `${number} es impar`;
+  return `${number} es impar`;
 };
 
 console.log(evenOrOdd(14));
@@ -317,17 +316,17 @@ console.log(evenOrOdd(14));
 console.log("14");
 
 const celsiusToFarenheit = (degrees, celsFar) => {
-	if (celsFar === "C") {
-		//  Formule T(°C) × 9/5 + 32
-		let convertion = degrees * 1.8 + 32;
-		return `${degrees}° Celsius is ${convertion}° Farenheit`;
-	} else if (celsFar === "F") {
-		// Formule (T(°F) - 32) / 1.8
-		let convertion = (degrees - 32) / 1.8;
-		return `${degrees}° Farenheit is ${convertion}° Celsius`;
-	}
+  if (celsFar === "C") {
+    //  Formule T(°C) × 9/5 + 32
+    let convertion = degrees * 1.8 + 32;
+    return `${degrees}° Celsius is ${convertion}° Farenheit`;
+  } else if (celsFar === "F") {
+    // Formule (T(°F) - 32) / 1.8
+    let convertion = (degrees - 32) / 1.8;
+    return `${degrees}° Farenheit is ${convertion}° Celsius`;
+  }
 
-	return mustStr;
+  return mustStr;
 };
 
 console.log(celsiusToFarenheit(32, "F"));
@@ -342,16 +341,16 @@ console.log(celsiusToFarenheit(32, "F"));
 // 15
 console.log("15");
 const binaryToDecimalViceversa = (stro, base) => {
-	if (!checkTypeData(stro, nom)) {
-		// código de mircha
-		if (base === 2) {
-			return `${stro} base 2: ${parseInt(stro, 10)} base 10`;
-		} else if (base === 10) {
-			return `${stro} base 10: ${stro.toString(2)} base 2`;
-		}
-	}
+  if (!checkTypeData(stro, nom)) {
+    // código de mircha
+    if (base === 2) {
+      return `${stro} base 2: ${parseInt(stro, 10)} base 10`;
+    } else if (base === 10) {
+      return `${stro} base 10: ${stro.toString(2)} base 2`;
+    }
+  }
 
-	return mustStr;
+  return mustStr;
 };
 
 console.log(binaryToDecimalViceversa(4, 10));
@@ -360,14 +359,14 @@ console.log(binaryToDecimalViceversa(4, 10));
 console.log("16");
 
 const discounts = (basePrice, diss) => {
-	if (!checkTypeData(basePrice, nom)) {
-		let disscount = (basePrice * diss) / 100;
-		let finalPrice = basePrice - disscount;
-		finalPrice.toFixed(2);
-		return finalPrice;
-	}
+  if (!checkTypeData(basePrice, nom)) {
+    let disscount = (basePrice * diss) / 100;
+    let finalPrice = basePrice - disscount;
+    finalPrice.toFixed(2);
+    return finalPrice;
+  }
 
-	return mustNumber;
+  return mustNumber;
 };
 
 console.log(discounts(1000, 30));
@@ -376,31 +375,31 @@ console.log(discounts(1000, 30));
 console.log("///////////17////////////");
 
 const daysUntilNow = (date) => {
-	if (!date instanceof Date)
-		return console.error("no es una instancia de Date");
+  if (!date instanceof Date)
+    return console.error("no es una instancia de Date");
 
-	let hoymenosFecha = new Date().getTime() - date.getTime();
-	let yearsMs = 1000 * 60 * 60 * 24 * 365; // 1 año en milisegundos
-	let humanYears = Math.floor(hoymenosFecha / yearsMs);
-	console.log(humanYears);
+  let hoymenosFecha = new Date().getTime() - date.getTime();
+  let yearsMs = 1000 * 60 * 60 * 24 * 365; // 1 año en milisegundos
+  let humanYears = Math.floor(hoymenosFecha / yearsMs);
+  console.log(humanYears);
 
-	let DATE = new Date();
-	let actualDay = DATE.getDate();
-	let actualMonth = DATE.getMonth();
-	let actualYear = DATE.getFullYear();
+  let DATE = new Date();
+  let actualDay = DATE.getDate();
+  let actualMonth = DATE.getMonth();
+  let actualYear = DATE.getFullYear();
 
-	let dateDay = date.getDate();
-	let dateMonth = date.getMonth();
-	let dateYear = date.getFullYear();
+  let dateDay = date.getDate();
+  let dateMonth = date.getMonth();
+  let dateYear = date.getFullYear();
 
-	let resultDay = actualDay - dateDay;
-	let resultMonth = actualMonth - dateMonth;
-	let resultYear = actualYear - dateYear;
+  let resultDay = actualDay - dateDay;
+  let resultMonth = actualMonth - dateMonth;
+  let resultYear = actualYear - dateYear;
 
-	console.log(resultYear);
-	return `Han pasado ${resultDay} días y ${Math.abs(
-		resultMonth
-	)} meses desde ${date.toLocaleDateString()}`;
+  console.log(resultYear);
+  return `Han pasado ${resultDay} días y ${Math.abs(
+    resultMonth
+  )} meses desde ${date.toLocaleDateString()}`;
 };
 
 daysUntilNow(new Date(2007, 10, 6));
@@ -416,57 +415,57 @@ console.log(daysUntilNow(new Date(2007, 10, 6)));
 console.log("18");
 
 const vocalsAndConsonants = (text = "") => {
-	const vowels = ["A", "E", "I", "O", "U"];
-	const consonants = [
-		"B",
-		"C",
-		"D",
-		"F",
-		"G",
-		"H",
-		"J",
-		"K",
-		"L",
-		"M",
-		"N",
-		"P",
-		"Q",
-		"R",
-		"S",
-		"T",
-		"V",
-		"W",
-		"X",
-		"Y",
-		"Z",
-		"Ñ",
-		"Á",
-		"É",
-		"Ó",
-		"Ú",
-		"ü",
-		"Ö",
-	];
+  const vowels = ["A", "E", "I", "O", "U"];
+  const consonants = [
+    "B",
+    "C",
+    "D",
+    "F",
+    "G",
+    "H",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z",
+    "Ñ",
+    "Á",
+    "É",
+    "Ó",
+    "Ú",
+    "ü",
+    "Ö",
+  ];
 
-	let vowelsLen = "";
-	let consonantsLen = "";
-	const alpabhet = vowels + consonants;
-	const upperText = text.toUpperCase();
+  let vowelsLen = "";
+  let consonantsLen = "";
+  const alpabhet = vowels + consonants;
+  const upperText = text.toUpperCase();
 
-	for (let i = 0; i < alpabhet.length; i++) {
-		// includes() is an array method that returns boolean for the value
-		for (const chars of upperText) {
-			if (vowels[i] === chars) {
-				vowelsLen += chars;
-			} else if (consonants[i] === chars) {
-				consonantsLen += chars;
-			}
-		}
-	}
+  for (let i = 0; i < alpabhet.length; i++) {
+    // includes() is an array method that returns boolean for the value
+    for (const chars of upperText) {
+      if (vowels[i] === chars) {
+        vowelsLen += chars;
+      } else if (consonants[i] === chars) {
+        consonantsLen += chars;
+      }
+    }
+  }
 
-	console.log(
-		`El texto "${text}" tiene: ${vowelsLen.length} vocales, ${consonantsLen.length} consonantes`
-	);
+  console.log(
+    `El texto "${text}" tiene: ${vowelsLen.length} vocales, ${consonantsLen.length} consonantes`
+  );
 };
 
 vocalsAndConsonants("Hola Mundo");
@@ -474,15 +473,15 @@ vocalsAndConsonants("Hola Mundo");
 // 19
 console.log("19");
 const validName = (name = "") => {
-	const regex = /[^0-9._%+-]\b[A-Za-z\\s]$/gis;
-	// s -> 'single-line-mode'
-	// the $ indicates there's nothing after that
+  const regex = /[^0-9._%+-]\b[A-Za-z\\s]$/gis;
+  // s -> 'single-line-mode'
+  // the $ indicates there's nothing after that
 
-	if (regex.test(name)) {
-		return "Verdadero";
-	} else {
-		return "Falso";
-	}
+  if (regex.test(name)) {
+    return "Verdadero";
+  } else {
+    return "Falso";
+  }
 };
 
 console.log(validName("Jonathan MirCha"));
@@ -491,9 +490,9 @@ console.log(validName("Jonathan MirCha"));
 console.log("20");
 
 const validEmail = (email = "") => {
-	// expresión regular del maistro /[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})/i
-	const regex = /\b^[A-Za-z0-9_,-.]+@[A-Za-z,-]{3,}\.+[A-Za-z]{2,}\b/gis;
-	return regex.test(email);
+  // expresión regular del maistro /[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})/i
+  const regex = /\b^[A-Za-z0-9_,-.]+@[A-Za-z,-]{3,}\.+[A-Za-z]{2,}\b/gis;
+  return regex.test(email);
 };
 
 console.log(validEmail("jonmircha@gmail.com"));
@@ -508,11 +507,11 @@ console.log(validEmail("jonmircha@gmail.com"));
 console.log("21");
 
 const expNumbers = (arr) => {
-	if (!arr instanceof Array) return console.error("No es una array");
+  if (!arr instanceof Array) return console.error("No es una array");
 
-	if (arr.length == 0) return console.error("El arreglo no puede estar vacío");
+  if (arr.length == 0) return console.error("El arreglo no puede estar vacío");
 
-	return arr.map((n) => n * n); // Muta el arreglo original [arr];
+  return arr.map((n) => n * n); // Muta el arreglo original [arr];
 };
 
 console.log(expNumbers([1, 4, 5]));
@@ -521,22 +520,22 @@ console.log(expNumbers([1, 4, 5]));
 console.log("22");
 
 const higherAndLower = (arr) => {
-	if (!arr instanceof Array) return console.error("Must array");
+  if (!arr instanceof Array) return console.error("Must array");
 
-	if (arr.length == 0) return console.error("Must elements on the array");
+  if (arr.length == 0) return console.error("Must elements on the array");
 
-	for (let i = 0; i < arr.length; i++) {
-		if (arr[i] > arr[i + 1]) console.info(arr[i]);
-		//sep
-		else if (arr[i] < arr[i - 1]) console.info(arr[i]);
-	}
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > arr[i + 1]) console.info(arr[i]);
+    //sep
+    else if (arr[i] < arr[i - 1]) console.info(arr[i]);
+  }
 
-	/* Métodos matemáticos max() y min()
-		 valor mayor: ${Math.max(...arr)}\nValor menor: ${Math.min(...arr)}
-		 es necesario pasar el spread operator, para crear una copia y mutar esta en vez del arreglo original
-	 */
+  /* Métodos matemáticos max() y min()
+     valor mayor: ${Math.max(...arr)}\nValor menor: ${Math.min(...arr)}
+     es necesario pasar el spread operator, para crear una copia y mutar esta en vez del arreglo original
+   */
 
-	return arr;
+  return arr;
 };
 
 console.log(higherAndLower([1, 4, 5, 99, -60]));
@@ -545,35 +544,26 @@ console.log(higherAndLower([1, 4, 5, 99, -60]));
 console.log("23");
 
 const evenAndOdd = (arr) => {
-	if (!arr instanceof Array) return console.error("Must array");
+  if (!arr instanceof Array) return console.error("Must array");
 
-	if (arr.length == 0) return console.error("Must elements on the array");
+  if (arr.length == 0) return console.error("Must elements on the array");
 
-	let evenNumbers = [];
-	let oddNumbers = [];
+  let evenNumbers = [];
+  let oddNumbers = [];
 
-	arr.forEach((n) => {
-		if (n % 2 === 0) evenNumbers += n;
-		else if (n % 2 !== 0) oddNumbers += n;
-	});
+  arr.forEach((n) => {
+    if (n % 2 === 0) evenNumbers += n;
+    else if (n % 2 !== 0) oddNumbers += n;
+  });
 
-	arr.filter((n) => n % 2 === 0);
+  arr.filter((n) => n % 2 === 0);
 
-	const resultArr = {
-		evens: evenNumbers,
-		odds: oddNumbers,
-	};
+  const resultArr = {
+    evens: evenNumbers,
+    odds: oddNumbers,
+  };
 
-	/*
-		map(), filter() y reduce();
-		usa filter();
-				return console.info({
-					even: arr.filter(n => n % 2 === 0),
-					odd: arr.filter(n => n % 2 === 1)
-				})
-	*/
-
-	return resultArr;
+  return resultArr;
 };
 
 console.info(evenAndOdd([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]));
@@ -588,18 +578,18 @@ console.info(evenAndOdd([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]));
 console.log("24");
 
 const descAndAsc = (arr) => {
-	let descendant = [];
-	let ascendant = [];
+  let descendant = [];
+  let ascendant = [];
 
-	descendant += arr.sort((a, b) => b - a);
-	ascendant += arr.sort((a, b) => a - b);
+  descendant += arr.sort((a, b) => b - a);
+  ascendant += arr.sort((a, b) => a - b);
 
-	const desAsc = {
-		asc: ascendant,
-		desc: descendant,
-	};
+  const desAsc = {
+    asc: ascendant,
+    desc: descendant,
+  };
 
-	return console.info(desAsc);
+  return console.info(desAsc);
 };
 
 descAndAsc([7, 5, 7, 8, 6]);
@@ -608,25 +598,25 @@ descAndAsc([7, 5, 7, 8, 6]);
 console.log("25");
 
 const removeDuplicated = (arr = []) => {
-	let newArr = []
+  let newArr = []
 
-	for (let ele of arr) {
-		if (Math.sign(newArr.indexOf(ele)) === -1) {
-			newArr.push(ele);
-		}
-	}
+  for (let ele of arr) {
+    if (Math.sign(newArr.indexOf(ele)) === -1) {
+      newArr.push(ele);
+    }
+  }
 
-	return console.log(newArr);
+  return console.log(newArr);
 
 
-	/*
-		let arry = {
-			ori: arr,
-			rmDup: arr.filter((val, index, self) => self.indexOf(val) === index)
-		}
+  /*
+    let arry = {
+      ori: arr,
+      rmDup: arr.filter((val, index, self) => self.indexOf(val) === index)
+    }
 
-		Set() en su naturaleza es no repetir los elementos de un objeto iterable
-	*/
+    Set() en su naturaleza es no repetir los elementos de un objeto iterable
+  */
 };
 
 removeDuplicated(["x", 10, "x", 2, "10", "24234", 10, true, true, true, "24234", true, true, true, true]);
@@ -634,32 +624,31 @@ removeDuplicated(["x", 10, "x", 2, "10", "24234", 10, true, true, true, "24234",
 // 26
 console.log("/////////////////26");
 const average = (arr = []) => {
-	let reducedArr = arr.reduce((prev, act) => prev + act);
-	return console.info(reducedArr / arr.length);
-	/* set nuevo tipo de dato en js */
+  let reducedArr = arr.reduce((prev, act) => prev + act);
+  return console.info(reducedArr / arr.length);
 };
 
 average([9, 8, 7, 6, 5, 4, 3, 2, 1, 0]);
 
 /*
 La clase recibirá un objeto al momento de instanciarse con los siguentes datos: id de la película en IMDB, titulo, director, año de estreno, país o países de origen, géneros y calificación en IMBD.
-	- Todos los datos del objeto son obligatorios.
-	- Valida que el id IMDB tenga 9 caracteres, los primeros 2 sean letras y los 
-		 7 restantes números.
-	- Valida que el título no rebase los 100 caracteres.
-	- Valida que el director no rebase los 50 caracteres.
-	- Valida que el año de estreno sea un número entero de 4 dígitos.
-	- Valida que el país o paises sea introducidos en forma de arreglo.
-	- Valida que los géneros sean introducidos en forma de arreglo.
-	- Valida que los géneros introducidos esten dentro de los géneros 
-		 aceptados*.
-	- Crea un método estático que devuelva los géneros aceptados*.
-	- Valida que la calificación sea un número entre 0 y 10 pudiendo ser 
-		decimal de una posición.
-	- Crea un método que devuelva toda la ficha técnica de la película.
-	- Apartir de un arreglo con la información de 3 películas genera 3 
-		instancias de la clase de forma automatizada e imprime la ficha técnica 
-		de cada película.
+  - Todos los datos del objeto son obligatorios.
+  - Valida que el id IMDB tenga 9 caracteres, los primeros 2 sean letras y los 
+     7 restantes números.
+  - Valida que el título no rebase los 100 caracteres.
+  - Valida que el director no rebase los 50 caracteres.
+  - Valida que el año de estreno sea un número entero de 4 dígitos.
+  - Valida que el país o paises sea introducidos en forma de arreglo.
+  - Valida que los géneros sean introducidos en forma de arreglo.
+  - Valida que los géneros introducidos esten dentro de los géneros 
+     aceptados*.
+  - Crea un método estático que devuelva los géneros aceptados*.
+  - Valida que la calificación sea un número entre 0 y 10 pudiendo ser 
+    decimal de una posición.
+  - Crea un método que devuelva toda la ficha técnica de la película.
+  - Apartir de un arreglo con la información de 3 películas genera 3 
+    instancias de la clase de forma automatizada e imprime la ficha técnica 
+    de cada película.
 
 * Géneros Aceptados: Action, Adult, Adventure, Animation, Biography, Comedy, Crime, Documentary ,Drama, Family, Fantasy, Film Noir, Game-Show, History, Horror, Musical, Music, Mystery, News, Reality-TV, Romance, Sci-Fi, Short, Sport, Talk-Show, Thriller, War, Western.
 */
@@ -669,56 +658,54 @@ console.log("///////////////////////////27////////////////////////////////////")
 
 
 class Movie {
-	regexId = /^\b[a-z]{2}[0-9]{7}\b$/g;
-	regexRelease = /\b[0-9]{4}\b/g;
-	regexRate = /^[1-9]\d*(\.\d)?$/g
-	static validGenders = ["Action", "Adult", "Adventure", "Animation", "Biography", "Comedy", "Crime", "Documentary", "Drama", "Family", "Fantasy", "Film Noir", "Game - Show", "History", "Horror", "Musical", "Music", "Mystery", "News", "Reality - TV", "Romance", "Sci - Fi", "Short", "Sport", "Talk - Show", "Thriller", "War", "Western"];
+  regexId = /^\b[a-z]{2}[0-9]{7}\b$/g;
+  regexRelease = /\b[0-9]{4}\b/g;
+  regexRate = /^[1-9]\d*(\.\d)?$/g
+  static validGenders = ["Action", "Adult", "Adventure", "Animation", "Biography", "Comedy", "Crime", "Documentary", "Drama", "Family", "Fantasy", "Film Noir", "Game - Show", "History", "Horror", "Musical", "Music", "Mystery", "News", "Reality - TV", "Romance", "Sci - Fi", "Short", "Sport", "Talk - Show", "Thriller", "War", "Western"];
 
-	constructor({id, title, director, release, country, genders, rate}) {
-		if (id == undefined || title == undefined || director == undefined || release == undefined || country == undefined || country.length == 0 || genders == undefined || genders.length == 0 || rate == undefined || rate < 1) throw 'All propierties must be defined';
+  constructor({id, title, director, release, country, genders, rate}) {
+    if (id == undefined || title == undefined || director == undefined || release == undefined || country == undefined || country.length == 0 || genders == undefined || genders.length == 0 || rate == undefined || rate < 1) throw 'All propierties must be defined';
 
-		this.validGenders = ["Action", "Adult", "Adventure", "Animation", "Biography", "Comedy", "Crime", "Documentary", "Drama", "Family", "Fantasy", "Film Noir", "Game-Show", "History", "Horror", "Musical", "Music", "Mystery", "News", "Reality-TV", "Romance", "Sci-Fi", "Short", "Sport", "Talk-Show", "Thriller", "War", "Western"];
+    this.validGenders = ["Action", "Adult", "Adventure", "Animation", "Biography", "Comedy", "Crime", "Documentary", "Drama", "Family", "Fantasy", "Film Noir", "Game-Show", "History", "Horror", "Musical", "Music", "Mystery", "News", "Reality-TV", "Romance", "Sci-Fi", "Short", "Sport", "Talk-Show", "Thriller", "War", "Western"];
 
 
-		if (!this.regexId.test(id)) throw 'The ID must be valid'
-		if (title.length > 100) throw 'The title must be lower than 100 characters';
-		if (director.length > 100) throw 'The director name must be lower than 100 characters';
-		if (!this.regexRelease.test(release)) throw 'The year release must be 4-digits number';
+    if (!this.regexId.test(id)) throw 'The ID must be valid'
+    if (title.length > 100) throw 'The title must be lower than 100 characters';
+    if (director.length > 100) throw 'The director name must be lower than 100 characters';
+    if (!this.regexRelease.test(release)) throw 'The year release must be 4-digits number';
 
-		if (!(country instanceof Array)) throw 'Enter a valid array';
-		if (country.some(n => n === "")) throw 'The country/countries must have characters, not a 0 of them kiddo'
+    if (!(country instanceof Array)) throw 'Enter a valid array';
+    if (country.some(n => n === "")) throw 'The country/countries must have characters, not a 0 of them kiddo'
 
-		// Validations for genders[]
-		if (!(genders instanceof Array)) throw 'Enter a valid array with genders';
-		if (genders.length < 1) throw 'Enter more than 1 gender of the movie';
+    if (!(genders instanceof Array)) throw 'Enter a valid array with genders';
+    if (genders.length < 1) throw 'Enter more than 1 gender of the movie';
 
-		for (let i = 0; i < genders.length; i++) {
-			if (this.validGenders.indexOf(genders[i]) == -1) {
-				throw 'Introduce a valid gender, please...'
-			}
-		}
+    for (let i = 0; i < genders.length; i++) {
+      if (this.validGenders.indexOf(genders[i]) == -1) {
+        throw 'Introduce a valid gender, please...'
+      }
+    }
 
-		if (!this.regexRate.test(rate)) throw 'Enter a valid ID from IDMb';
+    if (!this.regexRate.test(rate)) throw 'Enter a valid ID from IDMb';
 
-		this.propierties = {
-			// compited propierties completed propierties
-			id,
-			title,
-			director,
-			release,
-			country,
-			genders,
-			rate
-		}
-	}
+    this.propierties = {
+      id,
+      title,
+      director,
+      release,
+      country,
+      genders,
+      rate
+    }
+  }
 
-	static returnGenders() {
-		return this.validGenders;
-	}
+  static returnGenders() {
+    return this.validGenders;
+  }
 
-	tecnicFile() {
-		console.log(`Id: ${this.propierties.id}\nTitle: ${this.propierties.title}\nDirector: ${this.propierties.director}\nYear Release: ${this.propierties.release}\nCountry/Countries: ${this.propierties.country.join(', ')}\nGenders: ${this.propierties.genders.join(', ')}\nRate: ${this.propierties.rate}`)
-	}
+  tecnicFile() {
+    console.log(`Id: ${this.propierties.id}\nTitle: ${this.propierties.title}\nDirector: ${this.propierties.director}\nYear Release: ${this.propierties.release}\nCountry/Countries: ${this.propierties.country.join(', ')}\nGenders: ${this.propierties.genders.join(', ')}\nRate: ${this.propierties.rate}`)
+  }
 }
 
 // TODO
@@ -726,21 +713,11 @@ class Movie {
 
 // Shawshank Redemption -> cadena perpetua
 const movies = [
-	{id: "tt0068646", title: "The Godfather", director: "Francis Font Coppola", release: 1972, country: ["United States"], genders: ["Crime", "Drama"], rate: 9.2},
-	{id: "tt0068646", title: "The Shawshank Redemption", director: "Frank Darabont", release: 1994, country: ["United States"], genders: ["Drama"], rate: 9.3},
-	{id: "tt0468569", title: "The Dark Knight", director: "Christopher Nolan", release: 2008, country: ["United States"], genders: ["Action", "Crime", "Drama"], rate: 9.2}
+  {id: "tt0068646", title: "The Godfather", director: "Francis Font Coppola", release: 1972, country: ["United States"], genders: ["Crime", "Drama"], rate: 9.2},
+  {id: "tt0068646", title: "The Shawshank Redemption", director: "Frank Darabont", release: 1994, country: ["United States"], genders: ["Drama"], rate: 9.3},
+  {id: "tt0468569", title: "The Dark Knight", director: "Christopher Nolan", release: 2008, country: ["United States"], genders: ["Action", "Crime", "Drama"], rate: 9.2}
 ]
-
-console.log(Movie.returnGenders());
-
 movies.forEach(movie => {
-	var instancedMovies = new Movie(movie);
-	let div = document.createElement('div');
-	div.innerHTML = instancedMovies.tecnicFile();
-	let html = document.getElementById('html');
-
-	html.appendChild(div)
+  let instancedMovies = new Movie(movie);
+  console.log(instancedMovies);
 })
-
-// internet multidata base
-
